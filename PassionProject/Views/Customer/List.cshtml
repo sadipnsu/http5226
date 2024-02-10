@@ -1,0 +1,19 @@
+﻿@model IEnumerable<PassionProject.Models.CustomerDto>
+
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Customer Management List</h2>
+
+@foreach (var customer in Model)
+{
+    <h2><a href="/Customer/Details/@customer.CustomerId">@customer.CustomerName</a></h2>
+    <button>Add Customer</button>
+    <button>Edit</button>
+    <button>Delete</button>
+
+}
+
+
