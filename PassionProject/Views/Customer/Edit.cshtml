@@ -1,7 +1,32 @@
-﻿
+﻿@model PassionProject.Models.ViewModels.UpdateCustomer
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Update Customer</h2>
+<form action="/Customer/Update/@Model.SelectedCustomer.CustomerId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Customer ID *@
+        <input type="hidden" name="CustomerId" value="@Model.SelectedCustomer.CustomerId" />
+    </div>
+    <div>
+        <label>Customer Name:</label> <input type="text" name="CustomerName" value="@Model.SelectedCustomer.CustomerName" />
+    </div>
+    
+    @*<div>
+        <label>Species ID:</label>
+
+        <select name="SpeciesID">
+            @foreach (var species in Model.SpeciesOptions)
+            {
+                <option value="@species.SpeciesID">@species.SpeciesName</option>
+
+            }
+        </select>
+    </div>*@
+    <div>
+        <input type="submit" value="Update Customer"/>
+
+    </div>
+</form>
 

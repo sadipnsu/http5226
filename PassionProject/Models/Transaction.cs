@@ -30,6 +30,7 @@ namespace PassionProject.Models
         public int TransactionId { get; set; }
         public string CustomerName { get; set; }
         public int CustomerId { get; set; }
+        public string ProductName { get; set; }
         public int ProductId { get; set; }
         public int OrderQuantity { get; set; }
 

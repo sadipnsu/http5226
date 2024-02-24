@@ -1,19 +1,28 @@
 ﻿@model IEnumerable<PassionProject.Models.CustomerDto>
 
 
-@{
-    ViewBag.Title = "List";
-}
 
-<h2>Customer Management List</h2>
+    @{
+        ViewBag.Title = "List";
+    }
 
-@foreach (var customer in Model)
-{
-    <h2><a href="/Customer/Details/@customer.CustomerId">@customer.CustomerName</a></h2>
-    <button>Add Customer</button>
-    <button>Edit</button>
-    <button>Delete</button>
+    <h2>Customer List</h2>
+    <a href="/Customer/New"> New Customer</a>
 
-}
+    @foreach (var customer in Model)
+    {
+        <div class="d-flex">
+            <div class="form-control-plaintext">
+                <h2 class="form-control-plaintext"><a href="/Customer/Details/@customer.CustomerId">@customer.CustomerName</a></h2>
+            </div>
+            <div class="form-control-plaintext">
+                <a href="/Customer/DeleteConfirm/@customer.CustomerId">Delete</a>
+                <a href="/Customer/Edit/@customer.CustomerId">Edit</a>
+            </div>
+
+        </div>
+
+    }
+
 
 

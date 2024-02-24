@@ -1,0 +1,23 @@
+﻿﻿@model PassionProject.Models.ProductDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Product</h2>
+<form action="/Product/Update/@Model.ProductId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Product ID *@
+        <input type="text" name="ProductId" value="@Model.ProductId"/>
+    </div>
+    <div>
+        <label>Product Name:</label> <input type="text" name="ProductName" value="@Model.ProductName" >
+    </div>
+    <div>
+        <label>Base Quantity:</label>
+        <input type="text" name="BaseQuantity" value="@Model.BaseQuantity"/>
+    </div>
+    <div>
+        <input type="submit" value="Update Product"/>
+    </div>
+</form>

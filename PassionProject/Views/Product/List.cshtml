@@ -1,0 +1,16 @@
+﻿﻿@model IEnumerable<PassionProject.Models.ProductDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2> Product List</h2>
+<a href="/Product/New">New Product</a>
+@foreach (var Product in Model)
+{
+    <div class="flex-column">
+        <h2 class="form-control-plaintext"><a href="/Product/Details/@Product.ProductId">@Product.ProductName</a></h2>
+        <h2 class="form-control-plaintext"> Base Quantity: @Product.BaseQuantity</h2>
+   </div>
+
+}

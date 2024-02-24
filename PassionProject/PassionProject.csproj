@@ -201,9 +201,9 @@
     <Compile Include="Migrations\202402091939562_Product.designer.cs">
       <DependentUpon>202402091939562_Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202402100541259_Transaction.cs" />
-    <Compile Include="Migrations\202402100541259_Transaction.designer.cs">
-      <DependentUpon>202402100541259_Transaction.cs</DependentUpon>
+    <Compile Include="Migrations\202402180305458_transaction.cs" />
+    <Compile Include="Migrations\202402180305458_transaction.designer.cs">
+      <DependentUpon>202402180305458_transaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -212,6 +212,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\ViewModels\DetailsCustomer.cs" />
+    <Compile Include="Models\ViewModels\DetailsProduct.cs" />
+    <Compile Include="Models\ViewModels\DetailsTransaction.cs" />
+    <Compile Include="Models\ViewModels\UpdateCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,12 +294,23 @@
     <Content Include="Views\Customer\New.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Error.cshtml" />
+    <Content Include="Views\Customer\DeleteConfirm.cshtml" />
+    <Content Include="Views\Product\List.cshtml" />
+    <Content Include="Views\Product\New.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\DeleteConfirm.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Error.cshtml" />
+    <Content Include="Views\Transaction\List.cshtml" />
+    <Content Include="Views\Transaction\New.cshtml" />
+    <Content Include="Views\Transaction\DeleteConfirm.cshtml" />
+    <Content Include="Views\Transaction\Edit.cshtml" />
+    <Content Include="Views\Transaction\Error.cshtml" />
+    <Content Include="Views\Transaction\Details.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
-    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -331,8 +346,8 @@
     <EmbeddedResource Include="Migrations\202402091939562_Product.resx">
       <DependentUpon>202402091939562_Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402100541259_Transaction.resx">
-      <DependentUpon>202402100541259_Transaction.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202402180305458_transaction.resx">
+      <DependentUpon>202402180305458_transaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

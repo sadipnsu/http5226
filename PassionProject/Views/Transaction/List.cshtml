@@ -1,0 +1,12 @@
+﻿﻿@model IEnumerable<PassionProject.Models.TransactionDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Transactional List</h2>
+<a href="/Transaction/New">New Transaction</a>
+@foreach (var Transaction in Model)
+{
+    <h2><a href="/Transaction/Details/@Transaction.TransactionId">@Transaction.CustomerName, @Transaction.ProductName, @Transaction.OrderQuantity</a></h2>
+}

@@ -115,4 +115,4 @@ C:\Users\ASUS\source\repos\PassionProject\PassionProject\obj\Debug\PassionProjec
 C:\Users\ASUS\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.initial.resources
 C:\Users\ASUS\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.csproj.GenerateResource.cache
 C:\Users\ASUS\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.Product.resources
-C:\Users\ASUS\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.Transaction.resources
+C:\Users\ASUS\source\repos\PassionProject\PassionProject\obj\Debug\PassionProject.Migrations.transaction.resources

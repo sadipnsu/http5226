@@ -5,19 +5,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Description;
 using System.Web.Http;
-using System.Web.Mvc;
 using System.Net;
+using System.Net.Http;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
+
 
 namespace PassionProject.Controllers
 {
-    public class CustomerDataController : Controller
+    public class CustomerDataController : ApiController
     {
-        // GET: CustomerData
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/CustomerData/ListCustomers
+        /// <summary>
+        /// Returns all customers in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all customers in the database.
+        /// </returns>
+        /// <example>
+        /// GET: api/CustomerData/ListCustomers
+        /// </example>
         [HttpGet]
         public IEnumerable<CustomerDto> ListCustomers()
         {
@@ -30,10 +40,23 @@ namespace PassionProject.Controllers
                 CustomerName = c.CustomerName,
             }));
 
+
             return CustomerDtos;
         }
 
+        /// <summary>
+        /// Returns all customers in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: An customer in the system matching up to the customer ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the Customer</param>
+        /// <example>
         // GET: api/CustomerData/FindCustomer/5
+        /// </example>
         [ResponseType(typeof(Customer))]
         [HttpGet]
         public IHttpActionResult FindCustomer(int id)
@@ -53,7 +76,22 @@ namespace PassionProject.Controllers
             return Ok(CustomerDto);
         }
 
+        /// <summary>
+        /// Updates a particular Customer in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Customer ID primary key</param>
+        /// <param name="Customer">JSON FORM DATA of an Customer</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
         // POST: api/CustomerData/UpdateCustomer/5
+        /// FORM DATA: Customer JSON Object
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateCustomer(int id, Customer customer)
@@ -89,12 +127,25 @@ namespace PassionProject.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        
 
+
+        /// <summary>
+        /// Adds an Customer to the system
+        /// </summary>
+        /// <param name="Customer">JSON FORM DATA of an Customer</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: Customer ID, Customer Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
         // POST: api/CustomerData/AddCustomer
+        /// FORM DATA: Customer JSON Object
+        /// </example>
         [ResponseType(typeof(Customer))]
         [HttpPost]
-        public IHttpActionResult AddAnimal(Customer customer)
+        public IHttpActionResult AddCustomer(Customer customer)
         {
             if (!ModelState.IsValid)
             {
@@ -104,13 +155,25 @@ namespace PassionProject.Controllers
             db.Customers.Add(customer);
             db.SaveChanges();
 
-            return CreatedAtRoute("FindCustomer", new { id = customer.CustomerId }, customer);
+            return CreatedAtRoute("DefaultApi", new { id = customer.CustomerId }, customer);
         }
 
-        // POST: api/AnimalData/DeleteAnimal/5
+        /// <summary>
+        /// Deletes an Customer from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the Customer</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        // POST: api/CustomerData/DeleteCustomer/5
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(Customer))]
         [HttpPost]
-        public IHttpActionResult DeleteAnimal(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             Customer customer = db.Customers.Find(id);
             if (customer == null)
